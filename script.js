@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navigator.clipboard.writeText(chave).then(() => {
         copiarPixBtn.textContent = "Copiado!";
         setTimeout(() => {
-          copiarPixBtn.textContent = "📋 Copiar";
+          copiarPixBtn.textContent = "Copiar";
         }, 2000);
       }).catch(err => {
         alert("Erro ao copiar: " + err);
