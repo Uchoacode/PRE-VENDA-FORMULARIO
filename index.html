@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pré-venda Exclusiva - Streetwear</title>
+  <title>Drop Prelude</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -14,7 +14,7 @@
       <div class="logo-placeholder">
         <img src="WhatsApp_Image_2024-07-16_at_21.40.02-removebg-preview - cópia.png" alt="Logo" class="custom-logo" />
       </div>
-      <h1 class="header-title">Pré-venda exclusiva - Cadastre-se</h1>
+      <h1 class="header-title">Drop Prelude</h1>
     </div>
   </header>
 
@@ -34,14 +34,13 @@
 
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="Digite seu e-mail para receber novidades e promoções" required />
+            <input type="email" id="email" name="email" required />
           </div>
 
           <div class="form-group">
             <label for="telefone">Telefone</label>
             <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" required />
           </div>
-
 
           <div class="form-group">
             <label for="tamanho">Tamanho da camisa</label>
@@ -78,20 +77,22 @@
 
           <div class="form-group">
             <label for="bilhete">Nome para o bilhete de agradecimento</label>
-            <input type="text" id="bilhete" name="bilhete" placeholder="Nome que você quer no bilhete de agradecimento (ex: Obrigado, Vitor!)" />
+            <input type="text" id="bilhete" name="bilhete" />
           </div>
 
           <div class="form-group pix-payment-section">
             <label>Pagamento via Pix</label>
             <div class="pix-details">
               <img src="pix_qrcode.png" alt="QR Code Pix" class="pix-qrcode" />
-                <span class="pix-label">Chave Pix:</span>
-                <span id="chavePix" class="pix-key">sua.chave.pix@email.com</span>
-                <button type="button" id="copiarPix" class="pix-copy-button">📋 Copiar</button>
-              
+              <span class="pix-label">Chave Pix:</span>
+              <span id="chavePix" class="pix-key">sua.chave.pix@email.com</span>
+              <button type="button" id="copiarPix" class="pix-copy-button">Copiar</button>
               
             </div>
-            
+            <div class="form-group">
+                <label for="comprovante">Anexe o comprovante do Pix</label>
+                <input type="file" id="comprovante" name="comprovante" accept="image/*,application/pdf" required />
+              </div>
             <div class="form-group-checkbox">
               <input type="checkbox" id="pixConfirm" name="pixConfirm" required />
               <label for="pixConfirm">Confirmo que realizei o pagamento via Pix</label>
