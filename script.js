@@ -1,14 +1,28 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Inicializar EmailJS
-    emailjs.init("Oj8oQZ4ZpCWgCT-hm"); // Seu USER ID do EmailJS
+document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("Oj8oQZ4ZpCWgCT-hm");
 
-    // Elementos do DOM
     const form = document.getElementById("preOrderForm");
     const shirtOptions = document.querySelectorAll(".shirt-option");
     const modeloInput = document.getElementById("modelo");
     const thankYouMessage = document.getElementById("thankYouMessage");
     const pixConfirmCheckbox = document.getElementById("pixConfirm");
     const submitBtn = document.querySelector(".submit-btn");
+
+    // Botão de copiar chave Pix
+    const copiarPixBtn = document.getElementById("copiarPix");
+    const chavePixEl = document.getElementById("chavePix");
+
+    copiarPixBtn.addEventListener("click", function () {
+        const chave = chavePixEl.textContent;
+        navigator.clipboard.writeText(chave).then(() => {
+            copiarPixBtn.textContent = "Copiado!";
+            setTimeout(() => {
+                copiarPixBtn.textContent = "Copiar";
+            }, 2000);
+        }).catch(err => {
+            alert("Erro ao copiar: " + err);
+        });
+    });
 
     // Seleção do modelo da camisa
     shirtOptions.forEach(option => {
@@ -23,17 +37,23 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Coleta dos valores
         const nome = document.getElementById("nome").value.trim();
         const sobrenome = document.getElementById("sobrenome").value.trim();
         const email = document.getElementById("email").value.trim();
+        const telefone = document.getElementById("telefone").value.trim();
         const tamanho = document.getElementById("tamanho").value;
         const modelo = modeloInput.value;
         const bilhete = document.getElementById("bilhete").value.trim() || "Não informado";
+        const comprovante = document.getElementById("comprovante").files[0];
 
-        // Validação
-        if (!nome || !sobrenome || !email || !tamanho || !modelo) {
-            alert("Por favor, preencha todos os campos obrigatórios e selecione um modelo de camisa.");
+        if (!nome || !sobrenome || !email || !telefone || !tamanho || !modelo || !comprovante) {
+            alert("Por favor, preencha todos os campos obrigatórios e anexe o comprovante.");
+            return;
+        }
+
+        const telefoneRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+        if (!telefoneRegex.test(telefone)) {
+            alert("Por favor, insira um telefone válido.");
             return;
         }
 
@@ -48,22 +68,22 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Envio
         submitBtn.disabled = true;
         submitBtn.textContent = "Enviando...";
 
-        const templateParams = {
-            nome,
-            sobrenome,
-            email,
-            tamanho,
-            modelo,
-            bilhete,
-            pixConfirm: "Sim",
-            data_cadastro: new Date().toLocaleString("pt-BR")
-        };
+        const formData = new FormData();
+        formData.append("nome", nome);
+        formData.append("sobrenome", sobrenome);
+        formData.append("email", email);
+        formData.append("telefone", telefone);
+        formData.append("tamanho", tamanho);
+        formData.append("modelo", modelo);
+        formData.append("bilhete", bilhete);
+        formData.append("pixConfirm", "Sim");
+        formData.append("data_cadastro", new Date().toLocaleString("pt-BR"));
+        formData.append("comprovante", comprovante);
 
-        emailjs.send("service_ranltqp", "template_nmknmqy", templateParams)
+        emailjs.send("service_ranltqp", "template_nmknmqy", formData)
             .then(response => {
                 console.log("Email enviado com sucesso!", response.status, response.text);
                 showThankYouMessage();
@@ -78,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     });
 
-    // Mensagem de agradecimento
     function showThankYouMessage() {
         thankYouMessage.classList.remove("hidden");
         setTimeout(hideThankYouMessage, 5000);
@@ -95,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
         pixConfirmCheckbox.checked = false;
     }
 
-    // Validação em tempo real
+    // Validação de campos ao sair do foco
     const inputs = form.querySelectorAll("input[required], select[required]");
     inputs.forEach(input => {
         input.addEventListener("blur", () => validateField(input));
@@ -115,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return true;
     }
 
-    // Scroll visual no header
+    // Efeito sombra no scroll
     window.addEventListener("scroll", function () {
         const header = document.querySelector(".header");
         header.style.boxShadow = window.scrollY > 50 ? "0 2px 10px var(--color-shadow)" : "none";
