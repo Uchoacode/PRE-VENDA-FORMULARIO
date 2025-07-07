@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-venda Exclusiva - Streetwear</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Header fixo -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-placeholder">
+                <img src="img/WhatsApp_Image_2024-07-16_at_21.40.02-removebg-preview - cópia.png" alt="Logo" class="custom-logo">
+            </div>
+            
+
+            <h1 class="header-title">Pré-venda exclusiva - Cadastre-se</h1>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="main">
+        <div class="container">
+            <!-- Formulário principal -->
+            <section class="form-section">
+                <form id="preOrderForm" class="form">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sobrenome">Sobrenome</label>
+                        <input type="text" id="sobrenome" name="sobrenome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Digite seu e-mail para receber novidades e promoções" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tamanho">Tamanho da camisa</label>
+                        <select id="tamanho" name="tamanho" required>
+                            <option value="">Selecione o tamanho</option>
+                            <option value="M">M</option>
+                            <option value="G">G</option>
+                            <option value="GG">GG</option>
+                        </select>
+                    </div>
+
+                    <!-- Seletor visual de modelo -->
+                    <div class="form-group">
+                        <label>Modelo da camisa</label>
+                        <div class="shirt-selector">
+                            <div class="shirt-option" data-color="preta" data-price="R$ 99,90">
+                                <div class="shirt-images">
+                                    <img class="front-image" src="img/camisa_preta_frente.jpg" alt="Camisa Preta Frente">
+                                    <img class="back-image" src="img/camisa_preta_verso.jpg" alt="Camisa Preta Verso">
+                                </div>
+                                <span>Preta</span>
+                                <span class="price">R$ 99,90</span>
+                            </div>
+                            <div class="shirt-option" data-color="branca" data-price="R$ 99,90">
+                                <div class="shirt-images">
+                                    <img class="front-image" src="img/camisa_branca_frente.jpg" alt="Camisa Branca Frente">
+                                    <img class="back-image" src="img/camisa_branca_verso.jpg" alt="Camisa Branca Verso">
+                                </div>
+                                <span>Branca</span>
+                                <span class="price">R$ 99,90</span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="modelo" name="modelo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bilhete">Nome para o bilhete de agradecimento</label>
+                        <input type="text" id="bilhete" name="bilhete" placeholder="Nome que você quer no bilhete de agradecimento (ex: Obrigado, Vitor!)">
+                    </div>
+
+                    <div class="form-group pix-payment-section">
+                        <label>Pagamento via Pix</label>
+                        <div class="pix-details">
+                            <img src="img/pix_qrcode.png" alt="QR Code Pix" class="pix-qrcode">
+                            <p>Chave Pix: **sua.chave.pix@email.com**</p>
+                        </div>
+                        <div class="form-group-checkbox">
+                            <input type="checkbox" id="pixConfirm" name="pixConfirm" required>
+                            <label for="pixConfirm">Confirmo que realizei o pagamento via Pix</label>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Seção de vídeos -->
+            <section class="videos-section">
+                <div class="video-container">
+                    <h3>Veja como sua camisa será embalada</h3>
+                    <div class="video-placeholder">
+                        <p>Vídeo de embalagem será inserido aqui</p>
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <h3>Apresentação da nossa pré-venda</h3>
+                    <div class="video-placeholder">
+                        <p>Vídeo de apresentação será inserido aqui</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botão de finalizar cadastro no final -->
+            <section class="submit-section">
+                <button type="submit" form="preOrderForm" class="submit-btn">Finalizar Cadastro</button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Mensagem de agradecimento (oculta inicialmente) -->
+    <div id="thankYouMessage" class="thank-you-message hidden">
+        <div class="thank-you-content">
+            <h2>Obrigado por se cadastrar!</h2>
+            <p>Em breve você receberá todas as informações da nossa pré-venda.</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
