@@ -11,7 +11,7 @@
     --color-card: #2c2c2e;
     --color-text-primary: #f2f2f7;
     --color-text-secondary: #8e8e93;
-    --color-accent: #007aff; /* Um azul vibrante, comum em designs futuristas */
+    --color-accent: #ffcc00; /* Um azul vibrante, comum em designs futuristas */
     --color-border: #48484a;
     --color-shadow: rgba(0, 0, 0, 0.5);
 }
@@ -273,7 +273,7 @@ body {
     width: 100%;
     max-width: 400px;
     background-color: var(--color-accent);
-    color: var(--color-text-primary);
+    color: var(--color-background);
     border: none;
     padding: 18px 28px;
     font-size: 18px;
@@ -610,3 +610,63 @@ body {
         height: 200px;
     }
 }
+
+.popup-notification {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    background-color: #2c2c2e;
+    color: #f2f2f7;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  
+  .popup-notification.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .cronometro-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #111;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #ffcc00;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    margin: 30px auto;
+    justify-content: center;
+    animation: pulse-glow 2s infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 10px #ffcc00; }
+    50% { box-shadow: 0 0 25px #ffcc00; }
+    100% { box-shadow: 0 0 10px #ffcc00; }
+  }
+  
+  .relogio-icon {
+    color: #ffcc00;
+    font-size: 20px;
+  }
+  
+  #cronometro-hora {
+    color: #ffcc00;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .cronometro-alerta {
+    color: #fff700;
+    font-size: 16px;
+    font-weight: 500;
+  }
