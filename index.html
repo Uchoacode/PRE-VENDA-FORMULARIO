@@ -14,12 +14,36 @@
       <div class="logo-placeholder">
         <img src="WhatsApp_Image_2024-07-16_at_21.40.02-removebg-preview - cópia.png" alt="Logo" class="custom-logo" />
       </div>
-      <h1 class="header-title">Drop Prelude</h1>
+      <h1 class="header-title">PRÉ-VENDA</h1>
     </div>
   </header>
 
   <main class="main">
     <div class="container">
+
+      <!-- AVISO DE PRAZO EM DESTAQUE -->
+      <div style="
+        background-color: #1f1f1f;
+        border: 2px solid #ffcc00;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 16px;
+        margin-bottom: 40px;
+        box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+      ">
+        <p style="margin: 0; font-weight: 600; font-size: 18px;">
+          ⚠️ <span style="color: #ffcc00;">ATENÇÃO:</span>
+        </p>
+        <p style="margin-top: 10px;">
+          As camisas só serão enviadas após o término da pré-venda. O prazo mínimo de envio é de
+          <strong style="color: #ffcc00;">10 dias úteis após o fim da pré-venda</strong>.
+        </p>
+        <p style="margin-top: 8px;">
+          Entraremos em contato por <strong>WhatsApp</strong> para confirmar os dados e o tipo de entrega.
+        </p>
+      </div>
+
       <section class="form-section">
         <form id="preOrderForm" class="form">
           <!-- Dados Pessoais -->
@@ -54,29 +78,50 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label>Modelo da camisa</label>
-            <div class="shirt-selector">
-              <div class="shirt-option" data-color="preta" data-price="R$ 99,90">
-                <div class="shirt-images">
-                  <img class="front-image" src="camisa_preta_frente.jpg" alt="Camisa Preta Frente" />
-                  <img class="back-image" src="camisa_preta_verso.jpg" alt="Camisa Preta Verso" />
-                </div>
-                <span>Preta</span>
-                <span class="price">R$ 99,90</span>
-              </div>
-              <div class="shirt-option" data-color="branca" data-price="R$ 99,90">
-                <div class="shirt-images">
-                  <img class="front-image" src="camisa_branca_frente.jpg" alt="Camisa Branca Frente" />
-                  <img class="back-image" src="camisa_branca_verso.jpg" alt="Camisa Branca Verso" />
-                </div>
-                <span>Branca</span>
-                <span class="price">R$ 99,90</span>
-              </div>
+          <!-- Frase de urgência -->
+          <!-- CRONÔMETRO CENTRALIZADO -->
+          <div style="text-align: center; margin: 20px 0;">
+            <div class="cronometro-banner">
+              <span class="relogio-icon">🕒</span>
+              <span id="cronometro-hora">00:00:00</span>
+              <span class="cronometro-alerta">⚠️ Desconto está acabando!</span>
             </div>
-            <input type="hidden" id="modelo" name="modelo" required />
           </div>
 
+
+          <div class="form-group">
+            <label>Modelo da camisa</label>
+            <div class="form-group">
+              <label>Modelo da camisa</label>
+              <div class="shirt-selector">
+                
+                <!-- Camisa Preta -->
+                <div class="shirt-option" data-color="preta" data-price="R$ 89,90">
+                  <div class="shirt-images">
+                    <img class="front-image" src="camisa_preta_frente.jpg" alt="Camisa Preta Frente" />
+                    <img class="back-image" src="camisa_preta_verso.jpg" alt="Camisa Preta Verso" />
+                  </div>
+                  <span>Preta</span>
+                  <span class="price" style="text-decoration: line-through; color: #888;">R$ 109,90</span>
+                  <span class="price" style="color: #33ff99; font-weight: 600;">R$ 89,90</span>
+                </div>
+            
+                <!-- Camisa Branca -->
+                <div class="shirt-option" data-color="branca" data-price="R$ 89,90">
+                  <div class="shirt-images">
+                    <img class="front-image" src="camisa_branca_frente.jpg" alt="Camisa Branca Frente" />
+                    <img class="back-image" src="camisa_branca_verso.jpg" alt="Camisa Branca Verso" />
+                  </div>
+                  <span>Branca</span>
+                  <span class="price" style="text-decoration: line-through; color: #888;">R$ 109,90</span>
+                  <span class="price" style="color: #33ff99; font-weight: 600;">R$ 89,90</span>
+                </div>
+            
+              </div>
+              <input type="hidden" id="modelo" name="modelo" required />
+            </div>
+            
+          
           <!-- Personalização e Pagamento -->
           <div class="form-group">
             <label for="bilhete">Nome para o bilhete de agradecimento</label>
@@ -122,9 +167,15 @@
         </div>          
       </section>
 
-      <!-- Botão Finalizar -->
+      <!-- Botão Finalizar com impacto -->
       <section class="submit-section">
-        <button type="submit" form="preOrderForm" class="submit-btn">Finalizar Cadastro</button>
+        <button type="submit" form="preOrderForm" class="submit-btn">
+          Finalizar Compra!
+        </button>
+
+        <p style="text-align:center; margin-top: 10px; font-size: 14px; color: #8e8e93;">
+          Essa é sua chance de ter uma peça única antes de todo mundo.
+        </p>
       </section>
     </div>
   </main>
@@ -135,6 +186,9 @@
       <p>Em breve você receberá todas as informações da nossa pré-venda.</p>
     </div>
   </div>
+  <div id="popup-notification" class="popup-notification">
+    <p id="popup-text"></p>
+  </div>  
 
   <script src="script.js"></script>
 </body>
