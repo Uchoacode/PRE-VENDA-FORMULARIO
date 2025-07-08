@@ -197,14 +197,14 @@ body {
 
 .shirt-option:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
     transform: translateY(-5px); /* Pequeno efeito de elevação */
 }
 
 .shirt-option.selected {
     border-color: var(--color-accent);
-    background-color: rgba(0, 122, 255, 0.1); /* Fundo levemente azulado */
-    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+    background-color: rgba(255, 213, 0, 0.1); /* Fundo levemente azulado */
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
 }
 
 .shirt-images {
