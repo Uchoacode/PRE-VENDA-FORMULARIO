@@ -122,7 +122,7 @@ body {
 }
 
 .pix-copy-button:hover {
-    background-color: #005bb5;
+    background-color: var(--color-accent);
     transform: translateY(-1px);
 }
 
