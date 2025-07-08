@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       navigator.clipboard.writeText(chave).then(() => {
         copiarPixBtn.textContent = "Copiado!";
         setTimeout(() => {
-          copiarPixBtn.textContent = "Copiar";
+          copiarPixBtn.textContent = "📋 Copiar";
         }, 2000);
       }).catch(err => {
         alert("Erro ao copiar: " + err);
@@ -147,4 +147,71 @@ document.addEventListener("DOMContentLoaded", function () {
       header.style.boxShadow = window.scrollY > 50 ? "0 2px 10px var(--color-shadow)" : "none";
     });
   });
+  const nomes = [
+    "João - BA",
+    "Amanda - BA",
+    "Lucas - BA",
+    "Mariana - BA",
+    "Felipe - BA",
+    "Letícia - BA",
+    "Bruno - BA",
+    "Camila - BA",
+    "Rafael - BA",
+    "Sara - BA"
+  ];
+  
+  const mensagens = [
+    "adquiriu a camisa."
+  ];
+  
+  
+  function mostrarPopup() {
+    const nome = nomes[Math.floor(Math.random() * nomes.length)];
+    const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+  
+    const popup = document.getElementById("popup-notification");
+    const popupText = document.getElementById("popup-text");
+  
+    popupText.textContent = `✅ ${nome} ${msg}`;
+    popup.classList.add("show");
+  
+    setTimeout(() => {
+      popup.classList.remove("show");
+    }, 6000);
+  }
+  
+  // Exibir popup a cada 15 segundos
+  setInterval(mostrarPopup, 15000);
+
+  //ALARME
+  function iniciarContadorVisual() {
+    const fim = new Date("2025-07-15T23:59:59").getTime();
+
+    function atualizar() {
+      const agora = new Date().getTime();
+      const restante = fim - agora;
+
+      if (restante < 0) {
+        document.getElementById("cronometro-hora").innerText = "00:00:00";
+        document.querySelector(".cronometro-alerta").innerText = "⛔ Tempo esgotado!";
+        return;
+      }
+
+      const horas = Math.floor((restante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((restante % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((restante % (1000 * 60)) / 1000);
+
+      const formatado = 
+        String(horas).padStart(2, '0') + ':' +
+        String(minutos).padStart(2, '0') + ':' +
+        String(segundos).padStart(2, '0');
+
+      document.getElementById("cronometro-hora").innerText = formatado;
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+  }
+
+  document.addEventListener("DOMContentLoaded", iniciarContadorVisual);
   
